@@ -24,6 +24,13 @@ function env.reset()
 	end
 end
 
-if graphics then
-	termio.reset = graphics.reset or nil
+function termio.reset(bg, fg)
+	if bg then
+		term.current().setBackgroundColor(bg)
+	end
+	if fg then
+		term.current().setTextColor(fg)
+	end
+	term.current().clear()
+	term.current().setCursorPos(1, 1)
 end
